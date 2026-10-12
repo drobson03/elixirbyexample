@@ -1,0 +1,195 @@
+:root {
+  --bg: #fff;
+  --text: #252519;
+  --muted: #6f6a7a;
+  --link: #4e2a8e;
+  --code-bg: #f6f3fb;
+  --code-border: #e6e0f0;
+  --c: #8a8496;
+  --s: #2e7d32;
+  --a: #b5267a;
+  --m: #4e2a8e;
+  --k: #1a5fb4;
+  --n: #c2410c;
+  --attr: #8a5a00;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #17151c;
+    --text: #e6e3ea;
+    --muted: #9a94a6;
+    --link: #b79ef0;
+    --code-bg: #211e29;
+    --code-border: #2e2a39;
+    --c: #7c768a;
+    --s: #8bd17c;
+    --a: #f28fca;
+    --m: #c4a7ff;
+    --k: #7cb4ff;
+    --n: #ffad6b;
+    --attr: #e6c06a;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Georgia, "Iowan Old Style", "Palatino Linotype", "Noto Serif", "DejaVu Serif", "Liberation Serif", "Adwaita Sans", system-ui, serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+a, a:visited { color: var(--link); }
+
+h2 {
+  font-size: 32px;
+  font-weight: normal;
+  margin: 0 0 20px;
+  line-height: 1.2;
+}
+
+h2 a, h2 a:visited { text-decoration: none; }
+
+#intro {
+  max-width: 420px;
+  margin: 40px auto 40px;
+  padding: 0 20px;
+}
+
+#intro ul.toc {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0;
+}
+
+#intro ul.toc li { margin: 2px 0; }
+
+div.example {
+  width: 1100px;
+  margin: 40px auto 40px;
+  padding: 0 20px;
+}
+
+table.segments {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table.segments td {
+  vertical-align: top;
+  padding: 0;
+}
+
+td.docs {
+  width: 420px;
+  max-width: 420px;
+  min-width: 420px;
+  padding: 10px 15px 10px 10px !important;
+  color: var(--text);
+}
+
+td.docs p { margin: 0 0 10px; }
+td.docs p:last-child { margin-bottom: 0; }
+
+td.docs code {
+  font-family: Menlo, Monaco, Consolas, "DejaVu Sans Mono", monospace;
+  font-size: 13px;
+  background: var(--code-bg);
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+
+td.code {
+  position: relative;
+  background: var(--code-bg);
+  border-left: 1px solid var(--code-border);
+  border-right: 1px solid var(--code-border);
+  padding: 10px 10px 10px 15px !important;
+  width: 100%;
+}
+
+td.code.leading {
+  border-top: 1px solid var(--code-border);
+  border-radius: 4px 4px 0 0;
+}
+
+table.segments tr:last-child td.code {
+  border-bottom: 1px solid var(--code-border);
+  border-radius: 0 0 4px 4px;
+}
+
+table.segments tr:only-child td.code { border-radius: 4px; }
+
+table.output { margin-top: 20px; }
+
+td.code.shell {
+  border-top: 1px solid var(--code-border);
+  border-radius: 4px;
+}
+
+pre, code {
+  font-family: Menlo, Monaco, Consolas, "DejaVu Sans Mono", monospace;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+pre {
+  margin: 0;
+  white-space: pre;
+  overflow-x: auto;
+}
+
+.shell .prompt { color: var(--muted); user-select: none; }
+.shell .cmd { font-weight: bold; }
+
+.chroma .c { color: var(--c); font-style: italic; }
+.chroma .s { color: var(--s); }
+.chroma .a { color: var(--a); }
+.chroma .m { color: var(--m); }
+.chroma .k { color: var(--k); font-weight: bold; }
+.chroma .n { color: var(--n); }
+.chroma .attr { color: var(--attr); }
+
+button.copy {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font: 12px Menlo, Monaco, Consolas, monospace;
+  color: var(--muted);
+  background: var(--bg);
+  border: 1px solid var(--code-border);
+  border-radius: 4px;
+  padding: 2px 8px;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+button.copy:hover { opacity: 1; color: var(--link); }
+
+p.next { margin: 30px 0 0 10px; }
+
+p.footer {
+  color: var(--muted);
+  font-size: 75%;
+  margin-top: 40px;
+}
+
+#intro p.footer { margin-left: 0; }
+div.example p.footer { margin-left: 10px; }
+
+/* Narrow screens: stack prose above code like a single column. */
+@media (max-width: 1120px) {
+  div.example { width: auto; }
+  table.segments, table.segments tbody, table.segments tr, table.segments td { display: block; width: auto; }
+  td.docs { min-width: 0; max-width: none; width: auto; padding: 10px 0 !important; }
+  td.code, td.code.leading, table.segments tr:last-child td.code {
+    border: 1px solid var(--code-border);
+    border-radius: 4px;
+  }
+  td.code.empty { display: none; }
+}
